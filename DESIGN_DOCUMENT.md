@@ -16,6 +16,12 @@ I am a big fan of this framework for a few reasons:
 
 As a result, you can [see the deployed site here!](https://bristol-to-toronto.vercel.app/)
 
+### Styling
+
+The project uses [styled-components](https://styled-components.com/) for styling. I have used this library as it closely ties styles to specific components, and gives you the full power of JS in your CSS!
+
+The project requires some specific setup to make styled components work nicely with server side rendering. This setup can be seen in `.babelrc` and `pages/_document.js`.
+
 ### Linting and Formatting
 
 The project has been setup with linting with [ESlint](https://eslint.org/) and code formatting with [Prettier](https://prettier.io/).
