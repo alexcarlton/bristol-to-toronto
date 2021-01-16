@@ -1,14 +1,22 @@
 # Design Document
-## Framework
+
+## Architecture
+
+## Design Decisions
+
+### Framework
+
 The project uses the [Next.js](https://nextjs.org/) React framework and is deployed using [Vercel](https://vercel.com/).
 
 I am a big fan of this framework for a few reasons:
+
 - Zero config to deployment
 - Opinionated
 - Server side rendering capabilities
 
 As a result, you can [see the deployed site here!](https://bristol-to-toronto.vercel.app/)
-## Linting and Formatting
+
+### Linting and Formatting
 
 The project has been setup with linting with [ESlint](https://eslint.org/) and code formatting with [Prettier](https://prettier.io/).
 
