@@ -1,9 +1,10 @@
-import styled from "styled-components";
-
-const Header = styled.h1`
-  color: ${(props) => props.theme.colors.red};
-`;
+import { Layout } from "../lib/components/Layout/Layout";
 
 export default function Home() {
-  return <Header>Home</Header>;
+  return (
+    <Layout>
+      <Layout.Header>Header</Layout.Header>
+      <Layout.Main>Main Stuff</Layout.Main>
+    </Layout>
+  );
 }

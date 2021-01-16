@@ -1,6 +1,8 @@
 # Design Document
 
 ## Architecture
+### `<Layout />`
+The `<Layout />` component provides the top level layout for the application, and is made up of `<Layout.Header />` and `<Layout.Body />` .
 
 ## Design Decisions
 
