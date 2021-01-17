@@ -4,11 +4,11 @@ import { useRouter } from "next/router";
 import { useAuth } from "../lib/hooks/auth/useAuth";
 
 export default function Calendar() {
-  const { signOut, signedIn } = useAuth();
+  const { signOut, signedIn, loading } = useAuth();
   const router = useRouter();
 
   useEffect(() => {
-    if (!signedIn) {
+    if (!loading && !signedIn) {
       router.push("/");
     }
   }, [signedIn]);
