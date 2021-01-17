@@ -2,6 +2,7 @@ import { ThemeProvider } from "styled-components";
 import { theme } from "../lib/styles/theme";
 import { GlobalStyle } from "../lib/styles/GlobalStyle";
 import Head from "next/head";
+import { CalendarAPIProvider } from "../lib/providers/CalendarAPIProvider";
 
 export default function App({ Component, pageProps }) {
   return (
@@ -14,9 +15,11 @@ export default function App({ Component, pageProps }) {
         />
       </Head>
       <GlobalStyle />
-      <ThemeProvider theme={theme}>
-        <Component {...pageProps} />
-      </ThemeProvider>
+      <CalendarAPIProvider>
+        <ThemeProvider theme={theme}>
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </CalendarAPIProvider>
     </>
   );
 }
