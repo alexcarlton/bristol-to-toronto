@@ -6,7 +6,7 @@
 
 #### Fetching data
 
-I have taken the functionality of the browser quickstart example created custom providers and hooks, to mak eit more React friendly.
+I have taken the functionality of the [browser quickstart example](https://developers.google.com/calendar/quickstart/js) and created custom providers and hooks, to make it more React friendly.
 
 ##### useScript
 
