@@ -1,10 +1,24 @@
-import { Layout } from "../lib/components/Layout/Layout";
+import { useEffect } from "react";
+import { useRouter } from "next/router";
+import { useAuth } from "../lib/hooks/auth/useAuth";
 
 export default function Home() {
-  return (
-    <Layout>
-      <Layout.Header title="May, 2020" />
-      <Layout.Main>Main Stuff</Layout.Main>
-    </Layout>
-  );
+  const router = useRouter();
+  const { signedIn, loading, signIn } = useAuth();
+
+  useEffect(() => {
+    if (signedIn) {
+      router.push("/calendar");
+    }
+  }, [signedIn]);
+
+  if (loading) {
+    return <p>Loading</p>;
+  }
+
+  if (!signedIn) {
+    return <button onClick={signIn}>Sign In</button>;
+  }
+
+  return null;
 }

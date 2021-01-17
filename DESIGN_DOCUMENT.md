@@ -4,11 +4,9 @@
 
 ### Data
 
-#### Fetching data
-
 I have taken the functionality of the [browser quickstart example](https://developers.google.com/calendar/quickstart/js) and created custom providers and hooks, to make it more React friendly.
 
-##### useScript
+#### useScript
 
 This custom hook fetches an external script. This was required as [React does not play nice with the inline `onload` function.](https://github.com/facebook/react/issues/13863)
 
@@ -16,10 +14,16 @@ This custom hook fetches an external script. This was required as [React does no
 useScript({ id: STRING, src: STRING, onLoad: FUNCTION });
 ```
 
-##### `<CalendarAPIProvider />`
+#### `<CalendarAPIProvider />`
 
 This custom provider does the work to load the `gapi` script and to initialise the client. It then provides the values `loading` and `error` using React Context, so components further down the tree can check whether the `gapi` client is ready to use.
 
+#### Authorization
+Authorization for the application is managed with:
+- `<SignedInProvider />`: Fetches and listens for changes to the `isSignedIn` state, and provides the value to the rest of the app. 
+- `useAuth()` custom hook: Returns the current `isSignedIn` state value, and `signIn` and `signOut` methods.
+
+`
 ### `<Layout />`
 
 The `<Layout />` component provides the top level layout for the application, and is made up of `<Layout.Header />` and `<Layout.Body />` .
