@@ -1,7 +1,27 @@
 # Design Document
 
 ## Architecture
+
+### Data
+
+#### Fetching data
+
+I have taken the functionality of the [browser quickstart example](https://developers.google.com/calendar/quickstart/js) and created custom providers and hooks, to make it more React friendly.
+
+##### useScript
+
+This custom hook fetches an external script. This was required as [React does not play nice with the inline `onload` function.](https://github.com/facebook/react/issues/13863)
+
+```javascript
+useScript({ id: STRING, src: STRING, onLoad: FUNCTION });
+```
+
+##### `<CalendarAPIProvider />`
+
+This custom provider does the work to load the `gapi` script and to initialise the client. It then provides the values `loading` and `error` using React Context, so components further down the tree can check whether the `gapi` client is ready to use.
+
 ### `<Layout />`
+
 The `<Layout />` component provides the top level layout for the application, and is made up of `<Layout.Header />` and `<Layout.Body />` .
 
 This abstraction means we can easily re-use the layout elsewhere in the application.

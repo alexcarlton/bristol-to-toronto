@@ -17,6 +17,8 @@
     "react/prop-types": "off"
   },
   "globals": {
-    "React": "writable"
+    "React": "writable",
+    "process": "writable",
+    "gapi": "writable"
   }
 }
