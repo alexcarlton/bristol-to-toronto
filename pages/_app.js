@@ -3,6 +3,7 @@ import { theme } from "../lib/styles/theme";
 import { GlobalStyle } from "../lib/styles/GlobalStyle";
 import Head from "next/head";
 import { CalendarAPIProvider } from "../lib/providers/CalendarAPIProvider";
+import { SignedInProvider } from "../lib/providers/SignedInProvider";
 
 export default function App({ Component, pageProps }) {
   return (
@@ -16,9 +17,11 @@ export default function App({ Component, pageProps }) {
       </Head>
       <GlobalStyle />
       <CalendarAPIProvider>
-        <ThemeProvider theme={theme}>
-          <Component {...pageProps} />
-        </ThemeProvider>
+        <SignedInProvider>
+          <ThemeProvider theme={theme}>
+            <Component {...pageProps} />
+          </ThemeProvider>
+        </SignedInProvider>
       </CalendarAPIProvider>
     </>
   );
