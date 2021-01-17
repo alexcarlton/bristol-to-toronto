@@ -18,6 +18,7 @@
   },
   "globals": {
     "React": "writable",
-    "process": "readonly"
+    "process": "writable",
+    "gapi": "writable"
   }
 }

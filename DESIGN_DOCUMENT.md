@@ -16,6 +16,10 @@ This custom hook fetches an external script. This was required as [React does no
 useScript({ id: STRING, src: STRING, onLoad: FUNCTION });
 ```
 
+##### `<CalendarAPIProvider />`
+
+This custom provider does the work to load the `gapi` script and to initialise the client. It then provides the values `loading` and `error` using React Context, so components further down the tree can check whether the `gapi` client is ready to use.
+
 ### `<Layout />`
 
 The `<Layout />` component provides the top level layout for the application, and is made up of `<Layout.Header />` and `<Layout.Body />` .
