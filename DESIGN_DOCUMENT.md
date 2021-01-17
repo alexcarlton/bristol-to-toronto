@@ -57,3 +57,13 @@ The project has been setup with linting with [ESlint](https://eslint.org/) and c
 Both of these stages have been setup to be executed on staged changes, using the helper libraries [husky](https://github.com/typicode/husky) and [lint-staged](https://github.com/okonet/lint-staged).
 
 This stops us committing broken or un-formatted code! 🎉
+
+### Testing
+The project uses [jest](https://jestjs.io/) as a test runner, and [@testing-library/react](https://testing-library.com/docs/react-testing-library/intro/) for testing React components.
+
+I follow Kent C. Dodds' recommendations for testing, which are:
+- [Write tests. Not too many. Mostly integration.](https://kentcdodds.com/blog/write-tests)
+- [Avoid testing implementation details](https://kentcdodds.com/blog/testing-implementation-details)
+- Test as close to user use as possible
+
+These concepts allow us to write tests that give us confidence that our application works as expected, and are not susceptible to becoming brittle.
