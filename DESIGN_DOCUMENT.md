@@ -34,6 +34,15 @@ All data is being fetched using the `gapi` methods. To make them easier to use I
 - `listMultipleCalendarEvents(...)` API Function - a helper that calls `listCalendarEvents(...)` multiple times for an array of passed calendar ids.
 - `useFetchCalendars()` - Custom Hook - uses the API Functions to fetch the calendar data, and returns any errors.
 
+#### Global State
+
+React provides enough state management functionality to not require using Redux. That said, the ecosystem around Redux is so developed that on a larger project it may be a smarter move to use it!
+
+As this project is a small example, I have built up the global state using Reacts built in tooling:
+
+- `useContext` for storing global state
+- `useReducer` for handling actions
+
 ### `<Layout />`
 
 The `<Layout />` component provides the top level layout for the application, and is made up of `<Layout.Header />` and `<Layout.Body />` .
