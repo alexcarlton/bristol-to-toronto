@@ -1,14 +1,17 @@
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
 import { Layout } from "../lib/components/Layout/Layout";
 import { useRouter } from "next/router";
 import { useAuth } from "../lib/hooks/auth/useAuth";
 import { useFetchCalendars } from "../lib/hooks/api/useFetchCalendars";
+import { StateContext } from "../lib/providers/StateProvider/StateProvider";
 
 export default function Calendar() {
   const router = useRouter();
 
   const { signOut, signedIn, loading: loadingAuth } = useAuth();
   const { error } = useFetchCalendars();
+
+  const { state } = useContext(StateContext);
 
   useEffect(() => {
     if (!loadingAuth && !signedIn) {
@@ -19,6 +22,8 @@ export default function Calendar() {
   if (error) {
     return <p>Something went wrong 😭</p>;
   }
+
+  console.log(state);
 
   return (
     <Layout>

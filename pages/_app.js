@@ -4,6 +4,7 @@ import { GlobalStyle } from "../lib/styles/GlobalStyle";
 import Head from "next/head";
 import { CalendarAPIProvider } from "../lib/providers/CalendarAPIProvider";
 import { SignedInProvider } from "../lib/providers/SignedInProvider";
+import { StateProvider } from "../lib/providers/StateProvider/StateProvider";
 
 export default function App({ Component, pageProps }) {
   return (
@@ -16,13 +17,15 @@ export default function App({ Component, pageProps }) {
         />
       </Head>
       <GlobalStyle />
-      <CalendarAPIProvider>
-        <SignedInProvider>
-          <ThemeProvider theme={theme}>
-            <Component {...pageProps} />
-          </ThemeProvider>
-        </SignedInProvider>
-      </CalendarAPIProvider>
+      <StateProvider>
+        <CalendarAPIProvider>
+          <SignedInProvider>
+            <ThemeProvider theme={theme}>
+              <Component {...pageProps} />
+            </ThemeProvider>
+          </SignedInProvider>
+        </CalendarAPIProvider>
+      </StateProvider>
     </>
   );
 }
