@@ -19,11 +19,21 @@ useScript({ id: STRING, src: STRING, onLoad: FUNCTION });
 This custom provider does the work to load the `gapi` script and to initialise the client. It then provides the values `loading` and `error` using React Context, so components further down the tree can check whether the `gapi` client is ready to use.
 
 #### Authorization
+
 Authorization for the application is managed with:
-- `<SignedInProvider />`: Fetches and listens for changes to the `isSignedIn` state, and provides the value to the rest of the app. 
+
+- `<SignedInProvider />`: Fetches and listens for changes to the `isSignedIn` state, and provides the value to the rest of the app.
 - `useAuth()` custom hook: Returns the current `isSignedIn` state value, and `signIn` and `signOut` methods.
 
-`
+#### Data Fetching
+
+All data is being fetched using the `gapi` methods. To make them easier to use I have created the following helper functions and custom hooks:
+
+- `listCalendars(...)` API Function - for getting a list of calendars available to the user
+- `listCalendarEvents(...)` API Function - for fetching the events associated with a single calendar
+- `listMultipleCalendarEvents(...)` API Function - a helper that calls `listCalendarEvents(...)` multiple times for an array of passed calendar ids.
+- `useFetchCalendars()` - Custom Hook - uses the API Functions to fetch the calendar data, and returns any errors.
+
 ### `<Layout />`
 
 The `<Layout />` component provides the top level layout for the application, and is made up of `<Layout.Header />` and `<Layout.Body />` .
@@ -59,9 +69,11 @@ Both of these stages have been setup to be executed on staged changes, using the
 This stops us committing broken or un-formatted code! 🎉
 
 ### Testing
+
 The project uses [jest](https://jestjs.io/) as a test runner, and [@testing-library/react](https://testing-library.com/docs/react-testing-library/intro/) for testing React components.
 
 I follow Kent C. Dodds' recommendations for testing, which are:
+
 - [Write tests. Not too many. Mostly integration.](https://kentcdodds.com/blog/write-tests)
 - [Avoid testing implementation details](https://kentcdodds.com/blog/testing-implementation-details)
 - Test as close to user use as possible
