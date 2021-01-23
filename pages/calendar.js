@@ -6,8 +6,7 @@ import { useFetchCalendars } from "../lib/hooks/api/useFetchCalendars";
 
 export default function Calendar() {
   const router = useRouter();
-
-  const { signOut, signedIn, loading: loadingAuth } = useAuth();
+  const { signedIn, loading: loadingAuth } = useAuth();
   const { error } = useFetchCalendars();
 
   useEffect(() => {
@@ -23,9 +22,7 @@ export default function Calendar() {
   return (
     <Layout>
       <Layout.Header title="May, 2020" />
-      <Layout.Main>
-        Main Stuff <button onClick={signOut}>Sign Out</button>
-      </Layout.Main>
+      <Layout.Main>Main Stuff</Layout.Main>
     </Layout>
   );
 }
