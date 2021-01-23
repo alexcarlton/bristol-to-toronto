@@ -26,7 +26,7 @@ export default function CalendarPage() {
       <Layout.Header title="May, 2020" />
       <Layout.Main>
         <Sidebar>Hello</Sidebar>
-        <Calendar>Hi</Calendar>
+        <Calendar />
       </Layout.Main>
     </Layout>
   );
