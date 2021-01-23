@@ -3,8 +3,10 @@ import { Layout } from "../lib/components/Layout/Layout";
 import { useRouter } from "next/router";
 import { useAuth } from "../lib/hooks/auth/useAuth";
 import { useFetchCalendars } from "../lib/hooks/api/useFetchCalendars";
+import { Sidebar } from "../lib/components/Sidebar/Sidebar";
+import { Calendar } from "../lib/components/Calendar/Calendar";
 
-export default function Calendar() {
+export default function CalendarPage() {
   const router = useRouter();
   const { signedIn, loading: loadingAuth } = useAuth();
   const { error } = useFetchCalendars();
@@ -22,7 +24,10 @@ export default function Calendar() {
   return (
     <Layout>
       <Layout.Header title="May, 2020" />
-      <Layout.Main>Main Stuff</Layout.Main>
+      <Layout.Main>
+        <Sidebar>Hello</Sidebar>
+        <Calendar>Hi</Calendar>
+      </Layout.Main>
     </Layout>
   );
 }
