@@ -43,6 +43,14 @@ As this project is a small example, I have built up the global state using React
 - `useContext` for storing global state
 - `useReducer` for handling actions
 
+### Dates
+
+I have used the [Luxon](https://moment.github.io/luxon/index.html) library to work with dates, which provides a helpful wrapper for working with JS dates and times.
+
+#### `useCurrentWeek()`
+
+The `useCurrentWeek()` custom hook outputs the days of the current week, and is built using [Luxon](https://moment.github.io/luxon/index.html).
+
 ### `<Layout />`
 
 The `<Layout />` component provides the top level layout for the application, and is made up of `<Layout.Header />` and `<Layout.Body />` .
