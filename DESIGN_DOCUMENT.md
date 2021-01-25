@@ -30,7 +30,7 @@ This stops us committing broken or un-formatted code! 🎉
 
 ### Testing
 
-This project includes test for both high level UI and smaller functions of non-trivial complexity. I have not gone for full coverage with the tests, but just given a sample of how test.
+This project includes test for both high level UI and smaller functions of non-trivial complexity. I have not gone for full coverage as I normally would for times sake, but just given a sample of how I test! 🧪
 
 In lieu of a CI setup, the tests are setup to run on the `pre-push` git commit hook.
 
