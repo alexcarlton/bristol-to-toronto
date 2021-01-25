@@ -1,5 +1,49 @@
 # Design Document
 
+## Design Decisions
+
+### Framework
+
+The project uses the [Next.js](https://nextjs.org/) React framework and is deployed using [Vercel](https://vercel.com/).
+
+I am a big fan of this framework for a few reasons:
+
+- Zero config to deployment
+- Opinionated
+- Server side rendering capabilities
+
+As a result, you can [see the deployed site here](https://bristol-to-toronto.vercel.app/)
+
+### Styling
+
+The project uses [styled-components](https://styled-components.com/) for styling. I have used this library as it closely ties styles to specific components, and gives you the full power of JS in your CSS!
+
+The project requires some specific setup to make styled components work nicely with server side rendering. This setup can be seen in `.babelrc` and `pages/_document.js`.
+
+### Linting and Formatting
+
+The project has been setup with linting with [ESlint](https://eslint.org/) and code formatting with [Prettier](https://prettier.io/).
+
+Both of these stages have been setup to be executed on staged changes, using the helper libraries [husky](https://github.com/typicode/husky) and [lint-staged](https://github.com/okonet/lint-staged).
+
+This stops us committing broken or un-formatted code! 🎉
+
+### Testing
+
+This project includes test for both high level UI and smaller functions of non-trivial complexity. I have not gone for full coverage as I normally would for times sake, but just given a sample of how I test! 🧪
+
+In lieu of a CI setup, the tests are setup to run on the `pre-push` git commit hook.
+
+The project uses [jest](https://jestjs.io/) as a test runner, and [@testing-library/react](https://testing-library.com/docs/react-testing-library/intro/) for testing React components.
+
+I follow Kent C. Dodds' recommendations for testing, which are:
+
+- [Write tests. Not too many. Mostly integration.](https://kentcdodds.com/blog/write-tests)
+- [Avoid testing implementation details](https://kentcdodds.com/blog/testing-implementation-details)
+- Test as close to user use as possible
+
+These concepts allow us to write tests that give us confidence that our application works as expected, and are not susceptible to becoming brittle.
+
 ## Architecture
 
 ### Data
@@ -25,7 +69,7 @@ Authorization for the application is managed with:
 - `<SignedInProvider />`: Fetches and listens for changes to the `isSignedIn` state, and provides the value to the rest of the app.
 - `useAuth()` custom hook: Returns the current `isSignedIn` state value, and `signIn` and `signOut` methods.
 
-#### Data Fetching
+### Data Fetching
 
 All data is being fetched using the `gapi` methods. To make them easier to use I have created the following helper functions and custom hooks:
 
@@ -34,7 +78,7 @@ All data is being fetched using the `gapi` methods. To make them easier to use I
 - `listMultipleCalendarEvents(...)` API Function - a helper that calls `listCalendarEvents(...)` multiple times for an array of passed calendar ids.
 - `useFetchCalendars()` - Custom Hook - uses the API Functions to fetch the calendar data, and returns any errors.
 
-#### Global State
+### Global State
 
 React provides enough state management functionality to not require using Redux. That said, the ecosystem around Redux is so developed that on a larger project it may be a smarter move to use it!
 
@@ -51,48 +95,8 @@ I have used the [Luxon](https://moment.github.io/luxon/index.html) library to wo
 
 The `useCurrentWeek()` custom hook outputs the days of the current week, and is built using [Luxon](https://moment.github.io/luxon/index.html).
 
-### `<Layout />`
+## Further Improvements
 
-The `<Layout />` component provides the top level layout for the application, and is made up of `<Layout.Header />` and `<Layout.Body />` .
-
-This abstraction means we can easily re-use the layout elsewhere in the application.
-
-## Design Decisions
-
-### Framework
-
-The project uses the [Next.js](https://nextjs.org/) React framework and is deployed using [Vercel](https://vercel.com/).
-
-I am a big fan of this framework for a few reasons:
-
-- Zero config to deployment
-- Opinionated
-- Server side rendering capabilities
-
-As a result, you can [see the deployed site here!](https://bristol-to-toronto.vercel.app/)
-
-### Styling
-
-The project uses [styled-components](https://styled-components.com/) for styling. I have used this library as it closely ties styles to specific components, and gives you the full power of JS in your CSS!
-
-The project requires some specific setup to make styled components work nicely with server side rendering. This setup can be seen in `.babelrc` and `pages/_document.js`.
-
-### Linting and Formatting
-
-The project has been setup with linting with [ESlint](https://eslint.org/) and code formatting with [Prettier](https://prettier.io/).
-
-Both of these stages have been setup to be executed on staged changes, using the helper libraries [husky](https://github.com/typicode/husky) and [lint-staged](https://github.com/okonet/lint-staged).
-
-This stops us committing broken or un-formatted code! 🎉
-
-### Testing
-
-The project uses [jest](https://jestjs.io/) as a test runner, and [@testing-library/react](https://testing-library.com/docs/react-testing-library/intro/) for testing React components.
-
-I follow Kent C. Dodds' recommendations for testing, which are:
-
-- [Write tests. Not too many. Mostly integration.](https://kentcdodds.com/blog/write-tests)
-- [Avoid testing implementation details](https://kentcdodds.com/blog/testing-implementation-details)
-- Test as close to user use as possible
-
-These concepts allow us to write tests that give us confidence that our application works as expected, and are not susceptible to becoming brittle.
+- Update the calendar to handle events that span multiple days, currently these break the UI.
+- General styling improvements - working from a PDF yields much worse results than a design file!
+- Handle overlapping events - currently these block each other out, and look pretty terrible.
