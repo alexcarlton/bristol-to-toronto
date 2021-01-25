@@ -32,6 +32,8 @@ This stops us committing broken or un-formatted code! 🎉
 
 This project includes test for both high level UI and smaller functions of non-trivial complexity. I have not gone for full coverage with the tests, but just given a sample of how test.
 
+In lieu of a CI setup, the tests are setup to run on the `pre-push` git commit hook.
+
 The project uses [jest](https://jestjs.io/) as a test runner, and [@testing-library/react](https://testing-library.com/docs/react-testing-library/intro/) for testing React components.
 
 I follow Kent C. Dodds' recommendations for testing, which are:
