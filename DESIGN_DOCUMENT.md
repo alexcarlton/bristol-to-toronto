@@ -1,8 +1,8 @@
-# Design Document
+# 🛠 Design Document
 
-## Design Decisions
+## 🤔 Design Decisions
 
-### Framework
+### 🏗 Framework
 
 The project uses the [Next.js](https://nextjs.org/) React framework and is deployed using [Vercel](https://vercel.com/).
 
@@ -14,13 +14,13 @@ I am a big fan of this framework for a few reasons:
 
 As a result, you can [see the deployed site here](https://bristol-to-toronto.vercel.app/)
 
-### Styling
+### 💅 Styling
 
 The project uses [styled-components](https://styled-components.com/) for styling. I have used this library as it closely ties styles to specific components, and gives you the full power of JS in your CSS!
 
 The project requires some specific setup to make styled components work nicely with server side rendering. This setup can be seen in `.babelrc` and `pages/_document.js`.
 
-### Linting and Formatting
+### 🔎 Linting and Formatting
 
 The project has been setup with linting with [ESlint](https://eslint.org/) and code formatting with [Prettier](https://prettier.io/).
 
@@ -28,9 +28,9 @@ Both of these stages have been setup to be executed on staged changes, using the
 
 This stops us committing broken or un-formatted code! 🎉
 
-### Testing
+### ✅ Testing
 
-This project includes test for both high level UI and smaller functions of non-trivial complexity. I have not gone for full coverage as I normally would for times sake, but just given a sample of how I test! 🧪
+This project include test for both high level UI and smaller functions of non-trivial complexity. I have not gone for full coverage as I normally would for times sake, but just given a sample of how I test! 🧪
 
 In lieu of a CI setup, the tests are setup to run on the `pre-push` git commit hook.
 
@@ -44,15 +44,15 @@ I follow Kent C. Dodds' recommendations for testing, which are:
 
 These concepts allow us to write tests that give us confidence that our application works as expected, and are not susceptible to becoming brittle.
 
-## Architecture
+## 🕌 Architecture
 
-### Data
+### 💿 Data
 
 I have taken the functionality of the [browser quickstart example](https://developers.google.com/calendar/quickstart/js) and created custom providers and hooks, to make it more React friendly.
 
 #### useScript
 
-This custom hook fetches an external script. This was required as [React does not play nice with the inline `onload` function.](https://github.com/facebook/react/issues/13863)
+This custom hook fetches an external script, in this case the `gapi` script. This was required as [React does not play nice with the inline `onload` function.](https://github.com/facebook/react/issues/13863)
 
 ```javascript
 useScript({ id: STRING, src: STRING, onLoad: FUNCTION });
@@ -69,7 +69,7 @@ Authorization for the application is managed with:
 - `<SignedInProvider />`: Fetches and listens for changes to the `isSignedIn` state, and provides the value to the rest of the app.
 - `useAuth()` custom hook: Returns the current `isSignedIn` state value, and `signIn` and `signOut` methods.
 
-### Data Fetching
+### 📩 Data Fetching
 
 All data is being fetched using the `gapi` methods. To make them easier to use I have created the following helper functions and custom hooks:
 
@@ -78,7 +78,7 @@ All data is being fetched using the `gapi` methods. To make them easier to use I
 - `listMultipleCalendarEvents(...)` API Function - a helper that calls `listCalendarEvents(...)` multiple times for an array of passed calendar ids.
 - `useFetchCalendars()` - Custom Hook - uses the API Functions to fetch the calendar data, and returns any errors.
 
-### Global State
+### 🌍 Global State
 
 React provides enough state management functionality to not require using Redux. That said, the ecosystem around Redux is so developed that on a larger project it may be a smarter move to use it!
 
@@ -87,7 +87,7 @@ As this project is a small example, I have built up the global state using React
 - `useContext` for storing global state
 - `useReducer` for handling actions
 
-### Dates
+### 📆 Dates
 
 I have used the [Luxon](https://moment.github.io/luxon/index.html) library to work with dates, which provides a helpful wrapper for working with JS dates and times.
 
@@ -95,7 +95,7 @@ I have used the [Luxon](https://moment.github.io/luxon/index.html) library to wo
 
 The `useCurrentWeek()` custom hook outputs the days of the current week, and is built using [Luxon](https://moment.github.io/luxon/index.html).
 
-## Further Improvements
+## 🚀 Further Improvements
 
 - Update the calendar to handle events that span multiple days, currently these break the UI.
 - General styling improvements - working from a PDF yields much worse results than a design file!
