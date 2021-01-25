@@ -1,3 +1,5 @@
+# Design
+The design document for this code test [can be found here](DESIGN_DOCUMENT.md)
 # Getting Started
 ## Setting up the Google Calendar API
 ### Creating a project
