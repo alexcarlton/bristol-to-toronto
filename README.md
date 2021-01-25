@@ -39,7 +39,7 @@
 
 ## Environment Variables
 
-Clone the `.env.local.example` file and fill out the values:
+Clone the `.env.local.example` file, remove `.example`, and fill out the values:
 
 - `NEXT_PUBLIC_CALENDAR_API_KEY`: Your Google Calendar API Key
 - `NEXT_PUBLIC_CALENDAR_API_CLIENT_ID`: Your Google Calendar OAuth 2.0 Client ID
